@@ -7,12 +7,15 @@ function Event({ event }) {
   const date = moment(event.from).format('MMM D, h:mm a')
   const durationMillis = new Date(event.to) - new Date(event.from)
   const duration = moment.duration(durationMillis).humanize()
+  const title = event.membership ?
+    <span>{event.resource_name} reservation (<small className='text-muted'>{event.membership.name}</small>)</span> :
+    event.title
 
   return (
     <tr>
       <td className='text-nowrap'>{date}</td>
       <td className='text-nowrap'>{duration}</td>
-      <td>{event.title || event.resource_name}</td>
+      <td>{title}</td>
     </tr>
   )
 }
