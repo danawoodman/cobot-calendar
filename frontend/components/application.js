@@ -1,14 +1,21 @@
+import _ from 'lodash'
 import Calendar from './calendar'
 import moment from 'moment'
 import React from 'react'
 
-export default function Application({ events, refresh }) {
+export default function Application({ months, refresh }) {
   return (
     <div className='container mt-5 mb-5'>
       <h1>Calendar</h1>
       <hr />
-      <h2>{moment().format('MMMM')}</h2>
-      <Calendar events={events} />
+      {
+        _.map(months, (events, month) => (
+          <div key={month}>
+            <h2>{moment(new Date(month)).format('MMMM')}</h2>
+            <Calendar events={events} />
+          </div>
+        ))
+      }
       <p>
         <button
           className='btn btn-primary'

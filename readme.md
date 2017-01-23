@@ -22,9 +22,9 @@ nvm use
 npm install
 ```
 
-2. **Create a config file for your Cobot install:** Copy over the `config/default.js` file to `config/production.js` and then modify the values to suit your Cobot install.
+2. **Create a config file for your Cobot install:** Copy over the `config/default.js` file to `config/development.js` and then modify the values to suit your Cobot install.
 
-3. **Get an API Token:** Run the application with `npm run watch`, open up <http:localhost:6868>, then click the "Login to Cobot" link. Once you're logged in and grant access, you should see a response with an "authorization_token". Copy that value into `config/production.js` and replace the `cobotToken` value with it.
+3. **Get an API Token:** Run the application with `npm run watch`, open up <http:localhost:6868>, then click the "Login to Cobot" link. Once you're logged in and grant access, you should see a response with an "authorization_token". Copy that value into `config/development.js` and replace the `cobotToken` value with it.
 
 4. **Run application**: Now restart your application and open up <http://localhost:6868> again and you should see a list of your Cobot events. Check the Node and DevTools console for any errors. Now just load this webpage on a monitor at your space and open it in full screen mode. It will automatically refresh at an interval you set (default 10 minutes).
 

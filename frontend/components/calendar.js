@@ -1,24 +1,25 @@
+import _ from 'lodash'
 import moment from 'moment'
 import React, { PropTypes as types } from 'react'
 
 function Event({ event }) {
 
-  const date = moment(event.from).format('M/D @ h:mm a')
+  const date = moment(event.from).format('MMM D, h:mm a')
   const durationMillis = new Date(event.to) - new Date(event.from)
   const duration = moment.duration(durationMillis).humanize()
 
   return (
     <tr>
-      <td>{date}</td>
-      <td>{duration}</td>
-      <td>{event.title}</td>
+      <td className='text-nowrap'>{date}</td>
+      <td className='text-nowrap'>{duration}</td>
+      <td>{event.title || event.resource_name}</td>
     </tr>
   )
 }
 
 export default function Calendar({ events }) {
 
-  if (!events || !events.length) {
+  if (_.isEmpty(events)) {
     return (
       <p className='alert alert-warning'>No events to show 😢</p>
     )

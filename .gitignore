@@ -5,5 +5,5 @@ node_modules
 *.log*
 
 # App specific
-config/production.js
+config/development.js
 public

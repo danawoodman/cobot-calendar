@@ -1,6 +1,9 @@
 module.exports = {
-  env: 'production',
+  env: 'development',
   port: 6868,
+
+  // Number of months to show in calendar.
+  numMonths: 2,
 
   // Update this with the value you get back from the
   // /auth/callback route:

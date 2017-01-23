@@ -9,9 +9,10 @@ const styleLoader = new ExtractTextPlugin('[name].css')
 const webpack = require('webpack')
 
 // Environment variables
-const NODE_ENV = process.env.NODE_ENV || 'development'
 const COBOT_TOKEN = config.get('cobotToken')
 const COBOT_SUBDOMAIN = config.get('cobotSubdomain')
+const NODE_ENV = config.get('env')
+const NUMBER_OF_MONTHS = config.get('numMonths')
 const REFRESH_INTERVAL = config.get('refreshInterval')
 
 console.log(
@@ -43,6 +44,7 @@ const webpackConfig = {
         COBOT_SUBDOMAIN,
         COBOT_TOKEN,
         NODE_ENV,
+        NUMBER_OF_MONTHS,
         REFRESH_INTERVAL,
       }),
     }),
@@ -51,7 +53,7 @@ const webpackConfig = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /(node_modules)/,
+        exclude: /(server|node_modules)/,
         loader: 'babel',
         cacheDirectory: true,
         query: {
@@ -60,7 +62,6 @@ const webpackConfig = {
       },
       {
         test: /\.(css|scss|sass)/,
-        exclude: /node_modules/,
         loader: styleLoader.extract(
           'style-loader',
           'css-loader!autoprefixer-loader!sass-loader'
@@ -68,6 +69,7 @@ const webpackConfig = {
       },
       {
         test: /\.(svg|woff|woff2|eot|dtd|png|gif|jpg|jpeg|ttf)(\?.*)?$/,
+        exclude: /(server|node_modules)/,
         loader: 'file',
       },
     ],

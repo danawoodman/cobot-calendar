@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import Application from './components/application'
 import apiDate from './lib/api-date-string'
 import lastDate from './lib/last-date-of-month'
@@ -8,9 +9,22 @@ import 'isomorphic-fetch'
 const COBOT_SUBDOMAIN = process.env.COBOT_SUBDOMAIN
 const COBOT_TOKEN = process.env.COBOT_TOKEN
 const REFRESH_INTERVAL = process.env.REFRESH_INTERVAL
+const NUMBER_OF_MONTHS = process.env.NUMBER_OF_MONTHS
 const target = document.getElementById('app')
+const today = new Date()
 
-let events = []
+function constructMonthObject(months) {
+  return [ ...Array(months).keys() ].reduce((all, curr) => {
+    const day = curr === 0 ? today.getDate() : 1
+    const month = today.getMonth() + curr
+    const year = today.getFullYear()
+    all[new Date(year, month, day)] = []
+    return all
+  }, {})
+}
+
+// Create a month entry for every month to show.
+let months = constructMonthObject(NUMBER_OF_MONTHS)
 
 function fetchEvents(from, to, cb) {
 
@@ -24,42 +38,42 @@ function fetchEvents(from, to, cb) {
     .catch((err) => console.error(err))
 }
 
-function updateEvents(from, to) {
+function updateEvents() {
 
-  console.log('Updating events')
+  console.log('Updating events', months)
 
-  fetchEvents(from, to, (resp) => {
-    console.log('Events list updated:', resp)
-    if (resp && resp.length) {
-      events = resp
-      renderApplication()
-    }
+  _.map(months, (events, month) => {
+
+    console.log('Getting events for month:', month)
+
+    month = new Date(month)
+    const from = apiDate(month)
+    const to = apiDate(lastDate(month))
+
+    fetchEvents(from, to, (resp) => {
+      console.log('Events list updated:', resp)
+      if (resp && resp.length) {
+        months[month] = resp
+        renderApplication()
+      }
+    })
   })
+
 }
 
 function refresh() {
-
   console.log('Refreshing application')
-
-  // TODO get today to last day of current month
-  const today = new Date()
-  const from = apiDate(today)
-  const to = apiDate(lastDate(today))
-
-  updateEvents(from, to)
-
+  updateEvents()
   setTimeout(() => refresh(), REFRESH_INTERVAL)
 }
 
 
 function renderApplication() {
-
   console.log('Rendering application')
-  console.log('COBOT_TOKEN', COBOT_TOKEN)
-
+  console.log('months', months)
   ReactDOM.render(
     <Application
-      events={events}
+      months={months}
       refresh={refresh}
     />,
     target
