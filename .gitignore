@@ -1,0 +1,9 @@
+# System files
+node_modules
+.DS_Store
+*.logs
+*.log*
+
+# App specific
+config/production.js
+public

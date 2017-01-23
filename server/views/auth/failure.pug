@@ -1,0 +1,23 @@
+extends ../layout.pug
+
+block title
+  title Failure Authenticating
+
+block content
+  h1 Failure
+  pre= JSON.stringify(resp, null, 2)
+
+  h3 Params
+  table.table
+    tbody
+      tr
+        th Authentication code
+        td= code
+      tr
+        th
+          code COBOT_CLIENT_ID
+        td= COBOT_CLIENT_ID
+      tr
+        th
+          code COBOT_CLIENT_SECRET
+        td= COBOT_CLIENT_SECRET

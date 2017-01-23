@@ -1,0 +1,13 @@
+{
+  "plugins": [
+    ["babel-plugin-module-alias", [
+      { "src": "./frontend", "expose": "~/frontend" },
+      { "src": "./server", "expose": "~/server" },
+    ]]
+  ],
+  "presets": [
+    "react",
+    "es2015",
+    "stage-1"
+  ]
+}

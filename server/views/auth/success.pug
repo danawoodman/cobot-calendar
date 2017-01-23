@@ -1,0 +1,15 @@
+extends ../layout.pug
+
+block title
+  title Authentication Succeeded
+
+block content
+  h1 Success
+  p
+    | Please copy the below authenication token and put into 
+    = ' '
+    code config/default.js
+  pre= JSON.stringify(resp, null, 2)
+
+  p
+    a(href='/') ← Back home
