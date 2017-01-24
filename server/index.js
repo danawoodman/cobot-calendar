@@ -8,6 +8,7 @@ const config = require('config')
 const express = require('express')
 
 const COBOT_CLIENT_ID = config.get('cobotClientId')
+const COBOT_TOKEN = config.get('cobotToken')
 const COBOT_CLIENT_SECRET = config.get('cobotClientSecret')
 const PORT = config.get('port')
 const FRONTEND_PATH = process.env.PWD + '/public'
@@ -43,4 +44,9 @@ console.log(
   '⚙ ',
   chalk.yellow('COBOT_CLIENT_SECRET'),
   chalk.gray(COBOT_CLIENT_SECRET)
+)
+console.log(
+  '⚙ ',
+  chalk.yellow('COBOT_TOKEN'),
+  chalk.gray(COBOT_TOKEN)
 )
