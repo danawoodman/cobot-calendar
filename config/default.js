@@ -7,7 +7,7 @@ module.exports = {
 
   // Update this with the value you get back from the
   // /auth/callback route:
-  cobotToken: 'cobot-token-here',
+  cobotToken: null,
 
   cobotSubdomain: 'your-subdomain',
   cobotClientId: 'cobot-client-id',
