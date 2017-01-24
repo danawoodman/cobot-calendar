@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   env: 'development',
   port: 6868,
 
@@ -17,3 +17,7 @@ module.exports = {
   // Defaults to 10 minutes
   refreshInterval: 10 * 60 * 1000,
 }
+
+config.host = `http://localhost:${config.port}`
+
+module.exports = config

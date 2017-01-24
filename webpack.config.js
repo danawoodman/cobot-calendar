@@ -11,11 +11,14 @@ const webpack = require('webpack')
 // Environment variables
 const COBOT_TOKEN = config.get('cobotToken')
 const COBOT_SUBDOMAIN = config.get('cobotSubdomain')
+const COBOT_CLIENT_ID = config.get('cobotClientId')
+const HOST = config.get('host')
 const NODE_ENV = config.get('env')
 const NUMBER_OF_MONTHS = config.get('numMonths')
 const REFRESH_INTERVAL = config.get('refreshInterval')
 
 console.log(
+  '🔨 '
   chalk.green('Building with environment'),
   chalk.blue.underline(NODE_ENV)
 )
@@ -41,8 +44,10 @@ const webpackConfig = {
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify({
+        COBOT_CLIENT_ID,
         COBOT_SUBDOMAIN,
         COBOT_TOKEN,
+        HOST,
         NODE_ENV,
         NUMBER_OF_MONTHS,
         REFRESH_INTERVAL,

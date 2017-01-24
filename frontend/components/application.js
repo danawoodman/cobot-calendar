@@ -3,6 +3,9 @@ import Calendar from './calendar'
 import moment from 'moment'
 import React from 'react'
 
+const COBOT_CLIENT_ID = process.env.COBOT_CLIENT_ID
+const HOST = process.env.HOST
+
 export default function Application({ months, refresh }) {
   return (
     <div className='container-fluid m-5'>
@@ -26,7 +29,7 @@ export default function Application({ months, refresh }) {
         </button>
         <a
           className='btn btn-outline-primary'
-          href='https://www.cobot.me/oauth/authorize?response_type=code&client_id=b92a2ce04f5372173f16ea069e58d1ce&redirect_uri=http://localhost:6868/auth/callback&scope=read'
+          href={`https://www.cobot.me/oauth/authorize?response_type=code&client_id=${COBOT_CLIENT_ID}&redirect_uri=${HOST}/auth/callback&scope=read`}
         >
           Login to Cobot
         </a>

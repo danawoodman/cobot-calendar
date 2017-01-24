@@ -1,6 +1,7 @@
 module.exports = {
   env: 'NODE_ENV',
   port: 'PORT',
+  host: 'HOST',
   numMonths: 'NUMBER_OF_MONTHS',
   cobotToken: 'COBOT_TOKEN',
   cobotSubdomain: 'COBOT_SUBDOMAIN',
