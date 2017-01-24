@@ -44,6 +44,16 @@ function fetchEvents(from, to, cb) {
 
   console.log('Fetching events', { from, to })
 
+  if (!COBOT_TOKEN) {
+    console.error('No COBOT_TOKEN set!')
+    return
+  }
+
+  if (!COBOT_SUBDOMAIN) {
+    console.error('No COBOT_SUBDOMAIN set!')
+    return
+  }
+
   return fetch(`https://${COBOT_SUBDOMAIN}.cobot.me/api/bookings?from=${from}&to=${to}`, {
     headers: { 'Authorization': `Bearer ${COBOT_TOKEN}` },
   })
