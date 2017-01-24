@@ -9,7 +9,7 @@ const path = require('path')
 const COBOT_CLIENT_ID = config.get('cobotClientId')
 const COBOT_CLIENT_SECRET = config.get('cobotClientSecret')
 const PORT = config.get('port')
-const FRONTEND_PATH = path.join(__dirname, '..', 'public')
+const FRONTEND_PATH = path.join(process.env.PWD, 'public')
 
 //https://www.cobot.me/oauth/authorize?response_type=code&client_id=b92a2ce04f5372173f16ea069e58d1ce&redirect_uri=http://localhost:6868/auth/callback&scope=read
 
