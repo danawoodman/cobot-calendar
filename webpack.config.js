@@ -18,7 +18,7 @@ const NUMBER_OF_MONTHS = config.get('numMonths')
 const REFRESH_INTERVAL = config.get('refreshInterval')
 
 console.log(
-  '🔨 '
+  '🔨 ',
   chalk.green('Building with environment'),
   chalk.blue.underline(NODE_ENV)
 )
