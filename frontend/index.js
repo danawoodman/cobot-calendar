@@ -50,7 +50,7 @@ function fetchEvents(from, to, cb) {
     .then(checkStatus)
     .then(parseJSON)
     .then((resp) => cb(resp))
-    .catch((err) => console.error(err))
+    .catch((err) => console.error('AUTH ERROR', err))
 }
 
 function updateEvents() {
