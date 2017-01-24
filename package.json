@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "build-assets": "webpack",
+    "heroku-postbuild": "npm run build-assets",
     "start": "node server/index.js",
     "watch": "npm run watch-assets & npm run watch-server",
     "watch-assets": "npm run build-assets -- --watch",
