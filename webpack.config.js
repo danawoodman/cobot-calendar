@@ -74,7 +74,6 @@ const webpackConfig = {
       },
       {
         test: /\.(svg|woff|woff2|eot|dtd|png|gif|jpg|jpeg|ttf)(\?.*)?$/,
-        exclude: /(server|node_modules)/,
         loader: 'file',
       },
     ],

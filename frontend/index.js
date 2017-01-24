@@ -5,6 +5,7 @@ import lastDate from './lib/last-date-of-month'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import 'isomorphic-fetch'
+import './styles/index.scss'
 
 const COBOT_SUBDOMAIN = process.env.COBOT_SUBDOMAIN
 const COBOT_TOKEN = process.env.COBOT_TOKEN
