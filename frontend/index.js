@@ -106,4 +106,5 @@ function renderApplication() {
 }
 
 // Render the application, refreshing periodically:
+renderApplication()
 refresh()
