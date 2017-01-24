@@ -26,6 +26,20 @@ function constructMonthObject(months) {
 // Create a month entry for every month to show.
 let months = constructMonthObject(NUMBER_OF_MONTHS)
 
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response
+  } else {
+    var error = new Error(response.statusText)
+    error.response = response
+    throw error
+  }
+}
+
+function parseJSON(response) {
+    return response.json()
+}
+
 function fetchEvents(from, to, cb) {
 
   console.log('Fetching events', { from, to })
@@ -33,7 +47,8 @@ function fetchEvents(from, to, cb) {
   return fetch(`https://${COBOT_SUBDOMAIN}.cobot.me/api/bookings?from=${from}&to=${to}`, {
     headers: { 'Authorization': `Bearer ${COBOT_TOKEN}` },
   })
-    .then((resp) => resp.json())
+    .then(checkStatus)
+    .then(parseJSON)
     .then((resp) => cb(resp))
     .catch((err) => console.error(err))
 }
