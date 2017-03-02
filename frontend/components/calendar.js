@@ -9,9 +9,18 @@ function Event({ event }) {
   const time = moment(event.from).format('h:mm A')
   const durationMillis = new Date(event.to) - new Date(event.from)
   const duration = moment.duration(durationMillis).humanize()
-  const titleText = event.title.startsWith('Event: ') ?
-    event.title.replace('Event: ', '') :
-    event.title
+
+  let titleText
+  if (event.title) {
+    titleText = event.title.startsWith('Event: ') ?
+      event.title.replace('Event: ', '') :
+      event.title
+  } else if (event.resource_name) {
+    titleText = event.resource_name
+  } else {
+    titleText = 'Untitled event'
+  } 
+
   const title = event.membership ?
     <span>
       <FA name='user' className='mr-1' />
