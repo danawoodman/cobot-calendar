@@ -7,7 +7,7 @@ This is a simple events calendar of all upcoming cobot events for the current an
 
 # Setup
 
-0. **Setup a Cobot application:** Create a new Cobot application with the scope `read` and set the "Redirect URL" to <http://localhost:6868/auth/callback>, like:
+0. **Setup a Cobot application:** Create a [new Cobot application](https://www.cobot.me/oauth2_clients) with the scope `read` and set the "Redirect URL" to <http://localhost:6868/auth/callback>, like:
 
 ![](https://cl.ly/isQd/Screen%20Shot%202017-01-23%20at%201.47.17%20PM.png)
 
